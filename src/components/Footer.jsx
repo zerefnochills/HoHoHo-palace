@@ -53,7 +53,7 @@ const Footer = () => {
                     {/* Brand */}
                     <div>
                         <h3 className="font-playfair text-3xl font-bold text-gold-accent mb-4">
-                            🎄 Christmas Gifts
+                            🎄 HoHoHo Palace
                         </h3>
                         <p className="font-poppins text-snow-white/70 text-sm leading-relaxed">
                             Making every Christmas unforgettable with thoughtful, premium gifts for everyone you love.
@@ -145,7 +145,7 @@ const Footer = () => {
                         </div>
 
                         <p className="font-poppins text-snow-white/60 text-sm text-center">
-                            © {new Date().getFullYear()} Christmas Gift Store. Made with ❤️ for the holidays.
+                            © {new Date().getFullYear()} HoHoHo Palace. Made with ❤️ for the holidays.
                         </p>
                     </div>
                 </div>

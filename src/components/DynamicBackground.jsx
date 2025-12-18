@@ -1,27 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const DynamicBackground = () => {
-    const { scrollYProgress } = useScroll();
-
-    // Map scroll progress to time of day (0 = night, 0.25 = dawn, 0.5 = day, 0.75 = dusk, 1 = night)
-    const backgroundColor = useTransform(
-        scrollYProgress,
-        [0, 0.25, 0.5, 0.75, 1],
-        [
-            'linear-gradient(to bottom, #0B132B 0%, #1e1b4b 50%, #312e81 100%)', // Night
-            'linear-gradient(to bottom, #4c1d95 0%, #7c3aed 30%, #f97316 60%, #fbbf24 100%)', // Dawn
-            'linear-gradient(to bottom, #0ea5e9 0%, #38bdf8 50%, #7dd3fc 100%)', // Day
-            'linear-gradient(to bottom, #7c2d12 0%, #ea580c 30%, #fb923c 60%, #1e1b4b 100%)', // Dusk
-            'linear-gradient(to bottom, #0B132B 0%, #1e1b4b 50%, #312e81 100%)', // Night again
-        ]
-    );
+    // Generate continuous snowflakes
+    const snowflakes = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        animationDuration: `${Math.random() * 10 + 10}s`,
+        animationDelay: `${Math.random() * 10}s`,
+        size: Math.random() * 4 + 2,
+        opacity: Math.random() * 0.6 + 0.4,
+    }));
 
     return (
-        <motion.div
-            className="fixed inset-0 z-0"
-            style={{ background: backgroundColor }}
-        />
+        <>
+            {/* Fixed Midnight Background */}
+            <div
+                className="fixed inset-0 z-0"
+                style={{
+                    background: 'linear-gradient(to bottom, #0B132B 0%, #1e1b4b 50%, #312e81 100%)',
+                }}
+            />
+
+            {/* Continuous Falling Snowflakes */}
+            <div className="fixed inset-0 z-5 pointer-events-none overflow-hidden">
+                {snowflakes.map((flake) => (
+                    <div
+                        key={flake.id}
+                        className="snowflake absolute rounded-full bg-white"
+                        style={{
+                            left: flake.left,
+                            width: `${flake.size}px`,
+                            height: `${flake.size}px`,
+                            opacity: flake.opacity,
+                            animationDuration: flake.animationDuration,
+                            animationDelay: flake.animationDelay,
+                        }}
+                    />
+                ))}
+            </div>
+        </>
     );
 };
 

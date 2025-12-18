@@ -50,8 +50,8 @@ const Navbar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-midnight-blue/95 backdrop-blur-lg shadow-2xl'
-                    : 'bg-transparent'
+                ? 'bg-midnight-blue/95 backdrop-blur-lg shadow-2xl'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 py-4">
@@ -65,7 +65,7 @@ const Navbar = () => {
                     >
                         <span className="text-3xl">🎄</span>
                         <span className="font-playfair text-2xl font-bold text-gold-accent">
-                            Christmas Gifts
+                            HoHoHo Palace
                         </span>
                     </motion.div>
 
@@ -76,8 +76,8 @@ const Navbar = () => {
                                 key={item.id}
                                 onClick={() => scrollToSection(item.id)}
                                 className={`px-4 py-2 rounded-full font-poppins text-sm transition-all duration-300 ${activeSection === item.id
-                                        ? 'bg-gold-accent text-midnight-blue font-semibold'
-                                        : 'text-snow-white hover:bg-snow-white/10'
+                                    ? 'bg-gold-accent text-midnight-blue font-semibold'
+                                    : 'text-snow-white hover:bg-snow-white/10'
                                     }`}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
